@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse
 
-# Create your views here.
-
+from machineLearning.machineLearning import MachineLearning
+import pdb
 def teste(request):
     print('teste')
 
@@ -11,7 +12,13 @@ def teste(request):
 
 
 def testePost(request):
-    if request.method == 'POST':
-        print("realmente eh um post")
+    dadoPego = request.POST['dadoString']
+    print(dadoPego)
 
-    return render(request, 'teste.html',{'form':'asdasd'})
+    #if(request.method is "post"):
+    #pdb.set_trace()
+
+    mach = MachineLearning.Main(object)
+
+    #return render(request, 'teste.html',{'form':'asdasd'})
+    return HttpResponse(mach)
